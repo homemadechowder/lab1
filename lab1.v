@@ -73,29 +73,31 @@ assign HEX5 = ~hex5_hex4[14:8];
 
 
     mysystem u0 (
-        .clk_clk            (<connected-to-clk_clk>),            //         clk.clk
-        .reset_reset_n      (<connected-to-reset_reset_n>),      //       reset.reset_n
-        .memory_mem_a       (<connected-to-memory_mem_a>),       //      memory.mem_a
-        .memory_mem_ba      (<connected-to-memory_mem_ba>),      //            .mem_ba
-        .memory_mem_ck      (<connected-to-memory_mem_ck>),      //            .mem_ck
-        .memory_mem_ck_n    (<connected-to-memory_mem_ck_n>),    //            .mem_ck_n
-        .memory_mem_cke     (<connected-to-memory_mem_cke>),     //            .mem_cke
-        .memory_mem_cs_n    (<connected-to-memory_mem_cs_n>),    //            .mem_cs_n
-        .memory_mem_ras_n   (<connected-to-memory_mem_ras_n>),   //            .mem_ras_n
-        .memory_mem_cas_n   (<connected-to-memory_mem_cas_n>),   //            .mem_cas_n
-        .memory_mem_we_n    (<connected-to-memory_mem_we_n>),    //            .mem_we_n
-        .memory_mem_reset_n (<connected-to-memory_mem_reset_n>), //            .mem_reset_n
-        .memory_mem_dq      (<connected-to-memory_mem_dq>),      //            .mem_dq
-        .memory_mem_dqs     (<connected-to-memory_mem_dqs>),     //            .mem_dqs
-        .memory_mem_dqs_n   (<connected-to-memory_mem_dqs_n>),   //            .mem_dqs_n
-        .memory_mem_odt     (<connected-to-memory_mem_odt>),     //            .mem_odt
-        .memory_mem_dm      (<connected-to-memory_mem_dm>),      //            .mem_dm
-        .memory_oct_rzqin   (<connected-to-memory_oct_rzqin>),   //            .oct_rzqin
-        .rled_export        (<connected-to-rled_export>),        //        rled.export
-        .hex3_hex0_export   (<connected-to-hex3_hex0_export>),   //   hex3_hex0.export
-        .hex5_hex4_export   (<connected-to-hex5_hex4_export>),   //   hex5_hex4.export
-        .switches_export    (<connected-to-switches_export>),    //    switches.export
-        .pushbuttons_export (<connected-to-pushbuttons_export>)  // pushbuttons.export
+        .clk_clk            (CLOCK_50),         //    clk.clk
+        .reset_reset_n      (1'b1),      			//    reset.reset_n
+		  
+        .memory_mem_a       (HPS_DDR_ADDR),     //    memory.mem_a
+        .memory_mem_ba      (HPS_DDR_BA),      	//    .mem_ba
+        .memory_mem_ck      (HPS_DDR_CK_P),     //    .mem_ck
+        .memory_mem_ck_n    (HPS_DDR_CK_N),    	//    .mem_ck_n
+        .memory_mem_cke     (HPS_DDR_CKE),     	//    .mem_cke
+        .memory_mem_cs_n    (HPS_DDR_CS_N),    	//    .mem_cs_n
+        .memory_mem_ras_n   (HPS_DDR_RAS_N),   	//    .mem_ras_n
+        .memory_mem_cas_n   (HPS_DDR_CAS_N),   	//    .mem_cas_n
+        .memory_mem_we_n    (HPS_DDR_WE_N),    	//    .mem_we_n
+        .memory_mem_reset_n (HPS_DDR_RESET_N), 	//    .mem_reset_n
+        .memory_mem_dq      (HPS_DDR_DQ),      	//    .mem_dq
+        .memory_mem_dqs     (HPS_DDR_DQS_P),    //    .mem_dqs
+        .memory_mem_dqs_n   (HPS_DDR_DQS_N),   	//    .mem_dqs_n
+        .memory_mem_odt     (HPS_DDR_ODT),     	//    .mem_odt
+        .memory_mem_dm      (HPS_DDR_DM),      	//    .mem_dm
+        .memory_oct_rzqin   (HPS_DDR_RZQ),   	//    .oct_rzqin
+        
+		  .rled_export        (LEDR),        		//    rled.export
+        .hex3_hex0_export   (SW),   				//   	hex3_hex0.export
+        .hex5_hex4_export   (hex3_hex0),  		//   	hex5_hex4.export
+        .switches_export    (hex5_hex4),    		//    switches.export
+        .pushbuttons_export (~KEY[3:0])  			// 	pushbuttons.export
     );
 
 endmodule
